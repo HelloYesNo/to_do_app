@@ -4,9 +4,11 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "node index.js",
-        "build": "cd client && yarn build",
-        "install": "cd client && yarn install"
+        "start-react": "cd client && yarn start",
+        "build-node": "yarn build",
+        "build-react": "cd client && yarn build",
+        "install-react": "cd client && yarn add",
+        "build": "vercel-build"
     },
     "author": "",
     "license": "ISC",
