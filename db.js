@@ -1,11 +1,10 @@
 const Pool = require('pg').Pool;
 
 const pool = new Pool({
-    user: 'ubuntu',
-    password: 'ubuntu',
-    host: 'localhost',
-    port: 5432,
-    database: 'todoapp',
+    user: process.env.PGUSER,
+    password: process.env.PGPASSWORD,
+    host: process.env.PGHOST,
+    database: process.env.PGDATABASE,
 });
 
 module.exports = pool;
