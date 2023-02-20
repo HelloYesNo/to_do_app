@@ -6,7 +6,11 @@ const pool = require('./db');
 const OPENAI_API_KEY = require('./config');
 
 //middleware
-app.use(cors());
+app.use(
+    cors({
+        origin: 'http://95.217.20.126:3000',
+    })
+);
 app.use(express.json()); //req.body
 
 //ROUTES//
