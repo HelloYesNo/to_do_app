@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "start": "node index.js",
-        "build": "cd client && yarn build"
+        "build": "cd client && yarn build",
+        "install": "cd client && yarn install"
     },
     "author": "",
     "license": "ISC",
