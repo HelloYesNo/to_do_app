@@ -46,8 +46,7 @@ const ListTodo = () => {
                                 key={todo.id}
                                 className='flex p-5 rounded-lg flex-col-reverse bg-neutral text-neutral-content'
                             >
-                                <div className=''>
-                                    {/* <h2 className=''>{todo.description}</h2> */}
+                                <div>
                                     <div className='form-control'>
                                         <div className='input-group justify-between'>
                                             <EditTodo todo={todo} />
