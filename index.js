@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors');
 const { Configuration, OpenAIApi } = require('openai');
 const pool = require('./db');
-// const OPENAI_API_KEY = require('./config');
+const OPENAI_API_KEY = require('./config');
 
 //middleware
 app.use(cors());
@@ -15,7 +15,6 @@ app.use(express.json()); //req.body
 app.post('/todos', async (req, res) => {
     try {
         const { description } = req.body;
-        console.log(req.body);
         if (description !== '') {
             const newTodo = await pool.query(
                 'INSERT INTO todo (description) VALUES($1) RETURNING *',
@@ -32,7 +31,7 @@ app.post('/todos', async (req, res) => {
 app.post('/todos/openai', async (req, res) => {
     try {
         const configuration = new Configuration({
-            apiKey: process.env.OPENAI_API_KEY,
+            apiKey: OPENAI_API_KEY,
         });
         const openai = new OpenAIApi(configuration);
 

@@ -7,13 +7,15 @@ const InputTodo = () => {
     const onSubmitForm = async (e) => {
         try {
             const body = { description };
-            const response = await fetch('http://localhost:4000/todos', {
+            await fetch('http://localhost:4000/todos', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                },
                 body: JSON.stringify(body),
             });
 
-            console.log(response);
             window.location = '/';
         } catch (err) {
             console.error(err.message);
@@ -22,12 +24,14 @@ const InputTodo = () => {
 
     const addRandomTodo = async () => {
         try {
-            const response = await fetch('http://localhost:4000/todos/openai', {
+            await fetch('http://localhost:4000/todos/openai', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                },
             });
 
-            console.log(response);
             window.location = '/';
         } catch (err) {
             console.error(err.message);

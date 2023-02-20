@@ -3,24 +3,25 @@
 import React, { Fragment, useState, useEffect } from 'react';
 
 const EditTodo = ({ todo }) => {
-    useEffect(() => {
-        setDescription(todo.description);
-        updateDescription();
-    }, []);
-
     const [description, setDescription] = useState(todo.description);
     const [edit, setEdit] = useState(true);
 
-    const updateDescription = async (e) => {
-        e.preventDefault();
+    useEffect(() => {
+        setDescription(todo.description);
+    }, []);
+
+    const updateDescription = async () => {
         try {
             const body = { description };
             await fetch(`http://localhost:4000/todos/${todo.id}`, {
                 method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                },
                 body: JSON.stringify(body),
             });
-            setEdit(true);
+            return setEdit(true);
         } catch (err) {
             console.error(err.message);
         }
@@ -53,7 +54,7 @@ const EditTodo = ({ todo }) => {
                     </div>
                     <button
                         className='w-20 btn btn-square self-center'
-                        onClick={() => setEdit(true)}
+                        onClick={() => updateDescription()}
                     >
                         Edit
                     </button>
